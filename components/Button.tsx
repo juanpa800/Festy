@@ -6,7 +6,7 @@ const Button = ({ children }: ButtonProps) => {
   return (
     <button
       type="button"
-      className="bg-blue-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full"
+      className="bg-negro hover:bg-gris text-blanco font-bold py-2 px-4 rounded-xl m-3"
     >
       {children}
     </button>

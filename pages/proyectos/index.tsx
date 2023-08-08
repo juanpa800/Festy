@@ -1,10 +1,14 @@
 import { NextPage } from "next";
 import Link from "next/link";
 import Button from "@components/Button";
+import Navbar from "@components/Navbar";
 
 const Proyectos: NextPage = () => {
   return (
     <div>
+      <div className="flex flex-row text-3xl text-center justify-center">
+        <Navbar></Navbar>
+      </div>
       <h1>Proyectos</h1>
       <Button>
         <Link href="/">
