@@ -6,3 +6,63 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Enum_role {
+  administrador
+  integrante
+}
+
+model User {
+  id             String           @id @default(cuid())
+  name           String?
+  email          String?          @unique
+  image          String?
+  role           Enum_role        @default(integrante)
+  responsability Responsability[]
+  team           Team[]
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @default(now()) @updatedAt
+}
+
+model Team {
+  id        String    @id @default(cuid())
+  name      String?
+  user      User[]
+  project   Proyect[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+}
+
+model Proyect {
+  id             String           @id @default(cuid())
+  name           String?
+  budget         Int
+  team           Team             @relation(fields: [teamId], references: [id])
+  responsability Responsability[]
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @default(now()) @updatedAt
+  teamId         String
+}
+
+model Responsability {
+  id        String    @id @default(cuid())
+  user      User      @relation(fields: [userId], references: [id])
+  userId    String
+  element   Element[]
+  proyect   Proyect?  @relation(fields: [proyectId], references: [id])
+  proyectId String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+}
+
+model Element {
+  id     String  @id @default(cuid())
+  name   String?
+  price  Int
+  amount Int
+  responsability   Responsability? @relation(fields: [responsabilityId], references: [id])
+  responsabilityId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
