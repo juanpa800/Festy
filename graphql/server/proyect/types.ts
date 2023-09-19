@@ -6,24 +6,24 @@ type Proyect {
 
     id: String!  
     name: String!    
-    budget: Int!  
-    team: [Team]   
+    budget: Int!   
+    responsabilityId: [String]
     responsability: [Responsability]
+    team: Team
     teamId: String!
     
 }
 input ProyectUpdateable{
     name: String
     budget: Int
-    team: [String] 
+    team: String
     responsability: [String]
 }
 
 input ProyectCreatable{
     name: String
     budget: Int
-    team: [String] 
-    responsability: [String]
+    team: String
 }
 
 type Query {

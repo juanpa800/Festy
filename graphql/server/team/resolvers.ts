@@ -31,8 +31,6 @@ const teamResolvers: Resolver = {
                 data: {
                     id: args.data.id,
                     name: args.data.name,
-                    user: { connect: { id: args.data.user } },
-                    project: { connect: { id: args.data.project } },
                 },
             });
             return Team;

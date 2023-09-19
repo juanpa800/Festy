@@ -5,20 +5,20 @@ const modelTeam = gql`
 type Team {
     id: String!
     name: String!
-    user: [String]
-    project: [Proyect]
-    
+    user: [User]
+    userId: [String]
+    proyect: [Proyect]
+    proyectId: [String]
 }
+
 input TeamUpdateable{
     name: String
-    user: [String]
-
+    userId: [String]
+    proyectId: [String]
 }
 
 input TeamCreatable{
     name: String
-    user: String
-    proyect: String
 }
 
 type Query {

@@ -33,7 +33,6 @@ const proyectResolvers: Resolver = {
                     name: args.data.name,
                     budget: args.data.budget,
                     team: { connect: { id: args.data.team } },
-                    responsability: { connect: { id: args.data.responsability } },
                 },
             });
             return Proyect;
